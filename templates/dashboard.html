@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="dashboard-header">
+
+<div>
+<h2 class="title">Dashboard</h2>
+<p class="subtitle">Overview of your finances</p>
+</div>
+
+<div class="date-box">
+<p>Current Date</p>
+<h6>{{date}}</h6>
+</div>
+
+</div>
+
+
+
+<!-- CARDS -->
+
+<div class="row g-4 mb-4">
+
+<div class="col-md-3">
+<div class="finance-card balance-card">
+
+<div>
+<p class="card-title">Total Balance</p>
+<h3>{{balance}}</h3>
+<p class="small-text">Available funds</p>
+</div>
+
+<div class="icon-box blue">
+    <i class="bi bi-wallet2"></i>
+</div>
+
+</div>
+</div>
+
+
+<div class="col-md-3">
+<div class="finance-card income-card">
+
+<div>
+<p class="card-title">Total Income</p>
+<h3>{{income}}</h3>
+<p class="small-text">This month</p>
+</div>
+
+<div class="icon-box green">
+    <i class="bi bi-arrow-down-right"></i>
+</div>
+
+</div>
+</div>
+
+
+<div class="col-md-3">
+<div class="finance-card expense-card">
+
+<div>
+<p class="card-title">Total Expenses</p>
+<h3>{{expenses}}</h3>
+<p class="small-text">This month</p>
+</div>
+
+<div class="icon-box red">
+    <i class="bi bi-arrow-up-right"></i>
+</div>
+
+</div>
+</div>
+
+
+<div class="col-md-3">
+<div class="finance-card debit-card">
+
+<div>
+<p class="card-title">Pending Debits</p>
+<h3>{{debits}}</h3>
+<p class="small-text">Due soon</p>
+</div>
+
+<div class="icon-box orange">
+    <i class="bi bi-exclamation-circle"></i>
+</div>
+</div>
+</div>
+
+</div>
+<!-- CHARTS --> 
+ <div class="row g-4 mb-4"> 
+<div class="col-md-6">
+ <div class="chart-card"> 
+    <h5>Income vs Expenses</h5>
+     <div class="chart-wrapper"> <canvas id="incomeChart"></canvas> </div> </div> </div> <div class="col-md-6"> <div class="chart-card"> <h5>Top Expense Categories</h5> <div class="chart-wrapper"> <canvas id="expenseChart"></canvas> </div> </div> </div> </div>
+
+
+<!-- TRANSACTIONS -->
+
+<!-- RECENT TRANSACTIONS -->
+
+<div class="transactions-card">
+
+<h5>Recent Transactions</h5>
+
+{% for t in recent_transactions %}
+
+<div class="transaction">
+
+<div class="left">
+
+<div class="t-icon {% if t.type == 'expense' %}red{% else %}green{% endif %}">
+{% if t.type == 'expense' %}↗{% else %}↘{% endif %}
+</div>
+
+<div>
+<h6>{{t.get_category_display}}</h6>
+<p>{{t.description}}</p>
+</div>
+
+</div>
+
+<div class="right">
+
+{% if t.type == 'expense' %}
+<h6 class="text-danger">-${{t.amount}}</h6>
+{% else %}
+<h6 class="text-success">+${{t.amount}}</h6>
+{% endif %}
+
+<p>{{t.date}}</p>
+
+</div>
+
+</div>
+
+{% empty %}
+
+<p>No transactions yet.</p>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CHART JS -->
+
+<script>
+
+// BAR CHART
+const ctx = document.getElementById('incomeChart');
+
+new Chart(ctx, {
+type: 'bar',
+data: {
+labels: {{ months|safe }},
+datasets: [
+{
+label: 'Income',
+data: {{ income_data|safe }},
+backgroundColor: '#22c55e'
+},
+{
+label: 'Expenses',
+data: {{ expense_data|safe }},
+backgroundColor: '#ef4444'
+}
+]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false
+}
+});
+
+
+// PIE CHART
+const expenseCtx = document.getElementById('expenseChart');
+
+new Chart(expenseCtx, {
+type: 'pie',
+data: {
+labels: {{ category_labels|safe }},
+datasets: [{
+data: {{ category_values|safe }},
+backgroundColor: [
+'#3b82f6',
+'#10b981',
+'#f59e0b',
+'#ef4444',
+'#8b5cf6'
+]
+}]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false
+}
+});
+
+</script>
+
+
+{% endblock %}

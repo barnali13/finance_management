@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Finance Manager</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="custom-navbar">
+
+    <div class="nav-left">
+        <div class="logo-box">
+            ₹
+        </div>
+
+        <div>
+            <h5 class="brand-title">Finance Manager</h5>
+            <p class="brand-subtitle">Smart Money Management</p>
+        </div>
+    </div>
+
+
+    <div class="nav-right">
+
+        <a href="{% url 'dashboard' %}" class="nav-item {% if request.path == '/' %}active{% endif %}">
+            <i class="bi bi-grid"></i> Dashboard
+        </a>
+
+        <a href="{% url 'expenses' %}" class="nav-item {% if request.path == '/expenses/' %}active{% endif %}">
+            <i class="bi bi-cash-stack"></i> Expenses
+        </a>
+
+        <a href="{% url 'debits' %}" class="nav-item {% if request.path == '/debits/' %}active{% endif %}">
+            <i class="bi bi-credit-card"></i> Debits
+        </a>
+        <a href="{% url 'transactions' %}" class="nav-item {% if 'transactions' in request.path %}active{% endif %}">
+    <i class="bi bi-list"></i> Transactions
+        </a>
+        <a href="#" class="nav-item">
+            <i class="bi bi-bullseye"></i> Planner
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="container mt-4">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</body>
+</html>

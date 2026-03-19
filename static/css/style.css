@@ -1,0 +1,337 @@
+body{
+background:#eef2f7;
+font-family:'Segoe UI',sans-serif;
+ -webkit-font-smoothing: antialiased;
+}
+/* ===== CUSTOM NAVBAR ===== */
+
+.custom-navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    background:white;
+    border-bottom:1px solid #eee;
+}
+
+/* LEFT SIDE */
+
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-box{
+    width:45px;
+    height:45px;
+    background:linear-gradient(135deg,#4f46e5,#2563eb);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    box-shadow:0 5px 15px rgba(79,70,229,0.4);
+}
+
+.brand-title{
+    margin:0;
+    font-size:18px;
+    font-weight:700;
+    color:#2563eb;
+}
+
+.brand-subtitle{
+    margin:0;
+    font-size:12px;
+    color:#6b7280;
+}
+
+
+/* RIGHT MENU */
+
+.nav-right{
+    display:flex;
+    gap:10px;
+}
+
+.nav-item{
+    padding:10px 16px;
+    border-radius:12px;
+    text-decoration:none;
+    color:#374151;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:0.3s ease;
+}
+
+/* HOVER */
+.nav-item:hover{
+    background:#f3f4f6;
+}
+
+/* ACTIVE TAB */
+.nav-item.active{
+    background:#e0e7ff;
+    color:#2563eb;
+    font-weight:600;
+}
+
+/* HEADER */
+
+.dashboard-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.title{
+font-weight:700;
+ color: #111111;       /* dark black */
+font-size: 20px;
+}
+.card-balance h3 {
+    font-weight: 800;     /* extra bold */
+    color: #000000;       /* pure black */
+    font-size: 28px;      /* slightly bigger */
+}
+
+.subtitle{
+color:#6b7280;
+}
+
+.date-box{
+text-align:right;
+color:#101010;
+}
+
+
+
+
+/* ===== MODERN CARDS ===== */
+
+.finance-card{
+    border-radius:20px;
+    padding:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#111827;
+    transition:0.3s ease;
+}
+
+/* HOVER EFFECT */
+.finance-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* TEXT */
+
+.card-title{
+    font-weight:600;
+    font-size:14px;
+    color:#1a1b1d;
+}
+
+.finance-card h3{
+    font-size:40px;
+    font-weight:700;
+    margin:6px 0;
+}
+
+.small-text{
+    font-size:13px;
+    color:#6b7280;
+}
+
+
+/* ===== CARD COLORS (GRADIENT STYLE) ===== */
+
+.balance-card{
+   background: linear-gradient(135deg, 
+    #ffffff 10%, 
+    #d3e3f6 50%,  
+    #cddfff 100%);
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.income-card{
+   background: linear-gradient(135deg, 
+    #ffffff 10%, 
+    #ecfdf5 50%, 
+    #bbf7d0 100%
+);
+    color:#15803d;
+}
+
+.expense-card{
+    background: linear-gradient(135deg,
+     #ffffff 10%, 
+    #fdecec 50%, 
+    #f8caca 100%
+);
+    color:#b91c1c;
+}
+
+.debit-card{
+background: linear-gradient(135deg, 
+ #ffffff 10%, 
+#fdf3ec 50%, 
+ #ffd8b3 100%);
+    color:#ea580c;
+}
+
+
+/* ===== ICON STYLE ===== */
+
+.icon-box{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+    color:white;
+}
+
+/* GLOW EFFECT ICONS */
+
+.blue{
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+    box-shadow:0 8px 20px rgba(59,130,246,0.5);
+}
+
+.green{
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+   /* box-shadow:0 8px 20px rgba(34,197,94,0.5);*/
+}
+.icon-box.green {
+    background-color: #2ecc71;  /* green background */
+}
+
+.icon-box.green i {
+    color: #ffffff;  /* white arrow */
+    font-size: 18px;
+}
+
+.red{
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+    /* box-shadow:0 8px 20px rgba(239,68,68,0.5); */
+}
+.icon-box.red {
+    background-color: #e74c3c;  /* red background */
+}
+
+.icon-box.red i {
+    color: #ffffff;  /* white arrow */
+    font-size: 18px;
+}
+
+.orange{
+    background:linear-gradient(135deg,#f97316,#ea580c);
+    box-shadow:0 8px 20px rgba(249,115,22,0.5);
+}
+
+
+
+
+
+
+
+
+/* CHARTS */
+
+.chart-card{
+background:white;
+border-radius:15px;
+padding:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.chart-wrapper{
+height:320px;
+position:relative;
+}
+
+
+
+/* TRANSACTIONS */
+
+.transactions-card{
+background:white;
+border-radius:15px;
+padding:25px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.transaction{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+border-bottom:1px solid #eee;
+}
+
+.left{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.left h6{
+margin:0;
+font-weight:600;
+}
+
+.left p{
+margin:0;
+color:#6b7280;
+}
+
+.right{
+text-align:right;
+}
+
+.right p{
+margin:0;
+color:#6b7280;
+}
+
+
+
+/* TRANSACTION ICON */
+
+.t-icon{
+width:40px;
+height:40px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+}
+
+.red{
+background:#ffe5e5;
+color:#dc2626;
+}
+
+.green{
+background:#e8f8ee;
+color:#16a34a;
+}
+.transaction{
+    transition:0.3s;
+}
+
+.transaction:hover{
+    background:#f9fafb;
+    border-radius:10px;
+}

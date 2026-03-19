@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/transactions.css' %}">
+
+
+<div class="transactions-page">
+
+    <!-- HEADER -->
+    <div class="page-header">
+        <h2>All Transactions</h2>
+
+        <a href="#" class="add-btn" onclick="openModal()">
+            <i class="bi bi-plus"></i> Add Transaction
+        </a>
+    </div>
+
+
+    <!-- FILTER BOX -->
+    <div class="filter-box">
+
+        <input type="text" placeholder="Search" class="search-input">
+
+        <select class="filter-select">
+            <option>Type: All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+
+    </div>
+
+
+    <!-- TRANSACTION LIST -->
+    <div class="transaction-card">
+
+        <h6>{{ transactions|length }} Transactions</h6>
+
+        {% for t in transactions %}
+
+        <div class="transaction-row">
+
+            <!-- LEFT -->
+            <div class="left">
+
+                <div class="circle {% if t.type == 'income' %}green-border{% else %}red-border{% endif %}">
+                    {% if t.type == 'income' %}
+                        <i class="bi bi-arrow-up"></i>
+                    {% else %}
+                        <i class="bi bi-arrow-down"></i>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <h5>{{ t.description }}</h5>
+                    <p>{{ t.get_category_display }} • {{ t.date }}</p>
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+            <div class="right">
+
+                {% if t.type == 'income' %}
+                    <span class="income">+${{ t.amount }}</span>
+                {% else %}
+                    <span class="expense">-${{ t.amount }}</span>
+                {% endif %}
+
+                <small>{{ t.type|title }}</small>
+
+                <div class="actions">
+                    <i class="bi bi-pencil"></i>
+                    <a href="{% url 'delete_transaction' t.id %}">
+                        <i class="bi bi-trash text-danger"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
